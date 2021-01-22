@@ -3,7 +3,7 @@ R6:S Modding AllInOne Files (Writen with C#)
 
 It using this things:
 
-Memory.dll => future modding 
+sqlite => too lazy to add all manifest ,so i using sql thing
 Fody/Cortura => xml , compressed exe
 Obfuscar => for harder decode
 DepotDownloader => Old r6 getting
@@ -14,4 +14,3 @@ I give out the Source code (w/o any modding things)
 UI : Imarealperson (Real/Legofreak34)
 Code : Me (SlejmUr)
 
-Modding things from R6 Modding United / Throwback
