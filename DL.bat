@@ -11,7 +11,9 @@ goto ifstates
 
 
 :Normal
-	echo Normal, Depot is %DepotID% and Manifest is %ManifestID% , Path is %DownPath% , UserName is %username%
+	echo Depot1 is %DepotID_1% , Manifest1 is %ManifestID_1% 
+	echo Depot2 is %DepotID_2% , Manifest2 is %ManifestID_2%
+	echo Path is %DownPath% , UserName is %username%
 	echo.
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_1% -manifest %ManifestID_1% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10 
@@ -21,7 +23,7 @@ goto ifstates
 
 
 :Extra
-	echo Extra, Depot is %DepotID% and Manifest is %ManifestID% , Path is %DownPath% , UserName is %username%
+	echo Extra, Depot is %DepotID% and Manifest is %ManifestID% ^| Path is %DownPath% , UserName is %username%
 	echo.
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID% -manifest %ManifestID% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
 	echo Download is completed^!
@@ -42,19 +44,19 @@ goto ifstates
 :helping
 	echo.   	 Welcome to AIO-Tool Batch Extension^^!
 	echo.
-    echo USAGE:
-    echo   DL.bat 1 "Depot1" "Manifest1" "Depot2" "Manifest2" "Path/Folder" "UserName"
-    echo.   OR 
-    echo   DL.bat 2 "Depot" "Manifest" "Path/Folder" "UserName"
-    echo.   OR 
-    echo   DL.bat 3 "Depot1" "Manifest1" "Depot2" "Manifest2" "Path/Folder" "UserName" "files1" "files2"
-    echo.
-    echo.  Path need to use with "Example\Path1\Path2"
-    echo.
-    echo.  Files need to be with path or paste near to this tool
-    echo.  File need to use with .txt like:
-    echo.                      Example\Path\filelsit1.txt
-    echo.
+	echo USAGE:
+	echo   DL.bat 1 "Depot1" "Manifest1" "Depot2" "Manifest2" "Path/Folder" "UserName"
+	echo.   OR 
+	echo   DL.bat 2 "Depot" "Manifest" "Path/Folder" "UserName"
+	echo.   OR 
+	echo   DL.bat 3 "Depot1" "Manifest1" "Depot2" "Manifest2" "Path/Folder" "UserName" "files1" "files2"
+	echo.
+	echo.  Path need to use with "Example\Path1\Path2"
+	echo.
+	echo.  Files need to be with path or paste near to this tool
+	echo.  File need to use with .txt like:
+	echo.                      Example\Path\filelist1.txt
+	echo.
 	echo.  You can use 1 to Normal
 	echo.  You can use 2 to Extra
 	echo.  You can use 3 to Compressed
@@ -105,6 +107,7 @@ goto ifstates
 	if "%1"=="Extra" (goto if2)
 	if "%1"=="Compressed" (goto if3)
 
+	goto helping
 
 :if1
 	echo Normal
@@ -147,4 +150,4 @@ goto ifstates
 	set "File1="
 	set "File2="
 	pause
-	goto :eof
+	exit
