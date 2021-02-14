@@ -150,4 +150,3 @@ goto ifstates
 	set "File1="
 	set "File2="
 	pause
-	exit
