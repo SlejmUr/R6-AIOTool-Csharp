@@ -10,4 +10,4 @@ echo                        Downloading AllInOne Tools [C#]...
 echo ------------------------------------------------------------------------------
 curl -L  "https://drive.google.com/uc?id=1DZa44Z4kg2-0g7gmuNFdaWfv4hwK4CXh&authuser=0&export=download" --output AIO-Tools.exe
 cls
-exit
+pause
