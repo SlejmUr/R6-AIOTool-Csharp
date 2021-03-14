@@ -11,6 +11,7 @@ goto ifstates
 
 
 :Normal
+	set "prev=Normal"
 	echo Depot1 is %DepotID_1% , Manifest1 is %ManifestID_1% 
 	echo Depot2 is %DepotID_2% , Manifest2 is %ManifestID_2%
 	echo Path is %DownPath% , UserName is %username%
@@ -19,18 +20,20 @@ goto ifstates
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10 
 	echo.
 	echo Download is completed^!
-	goto end
+	goto verifing
 
 
 :Extra
+	set "prev=Extra"
 	echo Extra, Depot is %DepotID% and Manifest is %ManifestID% ^| Path is %DownPath% , UserName is %username%
 	echo.
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID% -manifest %ManifestID% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
 	echo Download is completed^!
-	goto end
+	goto verifing
 
 
 :Compressed
+	set "prev=Compressed"
 	echo Depot1 is %DepotID_1% , Manifest1 is %ManifestID_1%  ^| Depot2 is %DepotID_2% , Manifest2 is %ManifestID_2%
 	echo Path is %DownPath% , UserName is %username% ^| File1 is %File1% , File2 is %File2%
 	echo.
@@ -38,8 +41,7 @@ goto ifstates
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -filelist %File2% -validate -max-servers 15 -max-downloads 10    
 	echo.
 	echo Download is completed^!
-	goto end
-
+	goto verifing
 
 :helping
 	echo.   	 Welcome to AIO-Tool Batch Extension^^!
@@ -63,7 +65,7 @@ goto ifstates
 	echo.
 	echo. Your arguments is :
 	echo %*
-	echo %*>log.txt
+	echo %* >>log.txt
 	goto end
 
 :initextra
@@ -116,14 +118,15 @@ goto ifstates
 	if /i "%4"=="" (goto NoArg)
 	if /i "%5"=="" (goto NoArg)
 	if /i "%6"=="" (goto NoArg)
+	if /i "%7"=="" (goto NoArg)
 	goto initnormal
 
 :if2
 	echo Extra
 	if /i "%2"=="" (goto NoArg)
-	if /i "%3"=="" (echo No3 & goto NoArg)
-	if /i "%4"=="" (echo No4 & goto NoArg)
-	if /i "%5"=="" (echo No5 & goto NoArg)
+	if /i "%3"=="" (goto NoArg)
+	if /i "%4"=="" (goto NoArg)
+	if /i "%5"=="" (goto NoArg)
 	goto initextra
 
 :if3
@@ -135,8 +138,22 @@ goto ifstates
 	if /i "%6"=="" (goto NoArg)
 	if /i "%7"=="" (goto NoArg)
 	if /i "%8"=="" (goto NoArg)
+	if /i "%9"=="" (goto NoArg)
 	goto initcompressed
 
+:verifing
+	echo.
+	echo You want to verify?
+	echo 1 : Yes ^| 2 : No 
+	set /p veri="Enter here: "
+
+	if "%veri%"=="1" (
+		goto %prev%
+	)
+	if "%veri%"=="2" (
+		goto end
+	)
+	goto verifing
 
 :end
 	set "DownPath="
