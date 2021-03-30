@@ -1,0 +1,11 @@
+359550_install.vdf
+
+RainbowSix.exe
+
+RainbowSix.exe.manifest
+
+localization.lang
+
+sounds_rus.pck
+
+sounds_rus_playgo.pck
