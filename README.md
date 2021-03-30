@@ -1,7 +1,8 @@
 # R6-AIOTool-Csharp
-R6:S Modding AllInOne Files (Writen with C#)
+R6:S Modding AllInOne Add-on Files
 
-It using this things:
+
+The original C# files using this things:
 
 sqlite => too lazy to add all manifest ,so i using sql thing
 
@@ -12,8 +13,7 @@ ConfuserEX => for harder decode
 DepotDownloader => Old r6 getting
 
 
-Only exe + tutorial things here
-I give out the Source code (w/o any modding things)
+Add-ons like db, txt , etc here
 
 UI : Imarealperson (Real/Legofreak34)
 Code : Me (SlejmUr)
