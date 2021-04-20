@@ -43,6 +43,31 @@ goto ifstates
 	echo Download is completed^!
 	goto verifing
 
+
+
+:Compressed_Key
+	set "prev=Compressed_Key"
+	echo Depot1 is %DepotID_1% , Manifest1 is %ManifestID_1%  ^| Depot2 is %DepotID_2% , Manifest2 is %ManifestID_2%
+	echo Path is %DownPath% ^| File1 is %File1% , File2 is %File2%
+	echo.
+	dotnet depotdownloader_files/DepotDownloader.dll -app 359550 -depot %DepotID_1% -depotkey %DepotKey_1% -manifest %ManifestID_1% -dir "%DownPath%" -filelist %File1% -validate -max-servers 15 -max-downloads 10
+	dotnet depotdownloader_files/DepotDownloader.dll -app 359550 -depot %DepotID_2% -depotkey %DepotKey_2% -manifest %ManifestID_2% -dir "%DownPath%" -filelist %File2% -validate -max-servers 15 -max-downloads 10
+	echo.
+	echo Download is completed^!
+	goto verifing
+
+:Normal_Key
+	set "prev=Normal_Key"
+	echo Depot1 is %DepotID_1% , Manifest1 is %ManifestID_1% 
+	echo Depot2 is %DepotID_2% , Manifest2 is %ManifestID_2%
+	echo Path is %DownPath%
+	echo.
+	dotnet depotdownloader_files/DepotDownloader.dll -app 359550 -depot %DepotID_1% -depotkey %DepotKey_1% -manifest %ManifestID_1% -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
+	dotnet depotdownloader_files/DepotDownloader.dll -app 359550 -depot %DepotID_2% -depotkey %DepotKey_2% -manifest %ManifestID_2% -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
+	echo.
+	echo Download is completed^!
+	goto verifing
+
 :helping
 	echo.   	 Welcome to AIO-Tool Batch Extension^^!
 	echo.
@@ -63,9 +88,6 @@ goto ifstates
 	echo.  You can use 2 to Extra
 	echo.  You can use 3 to Compressed
 	echo.
-	echo. Your arguments is :
-	echo %*
-	echo %* >>log.txt
 	goto end
 
 :initextra
@@ -95,6 +117,29 @@ goto ifstates
 	set "username=%7"
 	goto Normal
 
+:initcompressedkey
+	set "DepotID_1=%2"
+	set "ManifestID_1=%3"
+	set "DepotID_2=%4"
+	set "ManifestID_2=%5"	
+	set "DownPath=%6"
+	set "File1=%7"
+	set "File2=%8"
+	shift
+	set "DepotKey_1=%8"
+	set "DepotKey_2=%9"
+	goto Compressed_Key
+
+:initnormalkey
+	set "DepotID_1=%2"
+	set "ManifestID_1=%3"
+	set "DepotID_2=%4"
+	set "ManifestID_2=%5"
+	set "DownPath=%6"
+	set "DepotKey_1=%7"
+	set "DepotKey_2=%8"
+	goto Normal_Key
+
 :ifstates
 	if "%~1"=="" (goto helping)
 	if "%~1"== "/?" (goto helping)
@@ -104,10 +149,14 @@ goto ifstates
 	if "%1"=="1" (goto if1)
 	if "%1"=="2" (goto if2)
 	if "%1"=="3" (goto if3)
+	if "%1"=="4" (goto if4)
+	if "%1"=="5" (goto if5)
 
 	if "%1"=="Normal" (goto if1)
 	if "%1"=="Extra" (goto if2)
 	if "%1"=="Compressed" (goto if3)
+	if "%1"=="Compressed_key" (goto if4)
+	if "%1"=="Normal_Key" (goto if5)
 
 	goto helping
 
@@ -141,6 +190,29 @@ goto ifstates
 	if /i "%9"=="" (goto NoArg)
 	goto initcompressed
 
+:if4
+	echo Compressed_Key
+	if /i "%2"=="" (goto NoArg)
+	if /i "%3"=="" (goto NoArg)
+	if /i "%4"=="" (goto NoArg)
+	if /i "%5"=="" (goto NoArg)
+	if /i "%6"=="" (goto NoArg)
+	if /i "%7"=="" (goto NoArg)
+	if /i "%8"=="" (goto NoArg)
+	if /i "%9"=="" (goto NoArg)
+	goto initcompressedkey
+
+:if5
+	echo Normal_Key
+	if /i "%2"=="" (goto NoArg)
+	if /i "%3"=="" (goto NoArg)
+	if /i "%4"=="" (goto NoArg)
+	if /i "%5"=="" (goto NoArg)
+	if /i "%6"=="" (goto NoArg)
+	if /i "%7"=="" (goto NoArg)
+	if /i "%8"=="" (goto NoArg)
+	goto initnormalkey
+
 :verifing
 	echo.
 	echo You want to verify?
@@ -166,4 +238,8 @@ goto ifstates
 	set "ManifestID_2="	
 	set "File1="
 	set "File2="
+	set "DepotKey_1="
+	set "DepotKey_2="
+	set "veri="
+	set "prev="
 	pause
