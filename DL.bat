@@ -27,7 +27,7 @@ goto ifstates
 	set "prev=Extra"
 	echo Extra, Depot is %DepotID% and Manifest is %ManifestID% ^| Path is %DownPath% , UserName is %username%
 	echo.
-	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID% -manifest %ManifestID% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
+	dotnet DepotDownloader/DepotDownloader.dll -app %AppID% -depot %DepotID% -manifest %ManifestID% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 15 -max-downloads 10
 	echo Download is completed^!
 	goto verifing
 
@@ -91,10 +91,11 @@ goto ifstates
 	goto end
 
 :initextra
-	set "DepotID=%2"
-	set "ManifestID=%3"
-	set "DownPath=%4"
-	set "username=%5"
+	set "AppID=%2"
+	set "DepotID=%3"
+	set "ManifestID=%4"
+	set "DownPath=%5"
+	set "username=%6"
 	goto Extra
 
 :initcompressed
@@ -176,6 +177,7 @@ goto ifstates
 	if /i "%3"=="" (goto NoArg)
 	if /i "%4"=="" (goto NoArg)
 	if /i "%5"=="" (goto NoArg)
+	if /i "%6"=="" (goto NoArg)
 	goto initextra
 
 :if3
@@ -242,4 +244,5 @@ goto ifstates
 	set "DepotKey_2="
 	set "veri="
 	set "prev="
+	set "AppID="
 	pause
