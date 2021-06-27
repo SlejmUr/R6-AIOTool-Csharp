@@ -31,6 +31,17 @@ goto ifstates
 	echo Download is completed^!
 	goto verifing
 
+:Compressed
+	set "prev=Compressed"
+	echo Depot1 is %DepotID_1% , Manifest1 is %ManifestID_1%  ^| Depot2 is %DepotID_2% , Manifest2 is %ManifestID_2%
+	echo Path is %DownPath% , UserName is %username% ^| File1 is %File1% , File2 is %File2%
+	echo.
+	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_1% -manifest %ManifestID_1% -username %username% -remember-password -dir "%DownPath%" -filelist %File1% -validate -max-servers 15 -max-downloads 10
+	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -filelist %File2% -validate -max-servers 15 -max-downloads 10    
+	echo.
+	echo Download is completed^!
+	goto verifing
+
 :helping
 	echo.   	 Welcome to AIO-Tool Batch Extension^^!
 	echo.
