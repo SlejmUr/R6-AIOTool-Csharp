@@ -1,0 +1,4 @@
+Operation "Health" introduced no new features/operators/maps.
+Instead it focused on fixing many issues game had at the time.
+For the Jäger-mains this is the last version of the Acog (RIP)!
+File size: 34gb. [COMP: 29.8GB]
