@@ -1,4 +1,4 @@
-peration "Blood Orchid" introduced two SDU operators: Ying and Lesion, and one GROM operator Ela.
+Operation "Blood Orchid" introduced two SDU operators: Ying and Lesion, and one GROM operator Ela.
 Y2S3 also removed Jager and Bandits ACOG.
 The map Theme Park was also released as a part of the expansion. 
 An abandoned theme park located in Hong Kong, China.
