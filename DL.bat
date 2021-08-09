@@ -1,6 +1,6 @@
 @echo off
 setlocal enableextensions enabledelayedexpansion
-goto ifstates
+goto getpath
 
 ::-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -62,14 +62,14 @@ goto ifstates
 	echo.  You can use 2 to Extra
 	echo.  You can use 3 to Compressed
 	echo.
+	echo %*
 	goto end
 
 :initextra
 	set "AppID=%2"
 	set "DepotID=%3"
 	set "ManifestID=%4"
-	set "DownPath=%5"
-	set "username=%6"
+	set "username=%5"
 	goto Extra
 
 :initcompressed
@@ -77,10 +77,9 @@ goto ifstates
 	set "ManifestID_1=%3"
 	set "DepotID_2=%4"
 	set "ManifestID_2=%5"	
-	set "DownPath=%6"
-	set "username=%7"
-	set "File1=%8"
-	set "File2=%9"
+	set "username=%6"
+	set "File1=%7"
+	set "File2=%8"
 	goto Compressed
 
 :initnormal
@@ -88,8 +87,7 @@ goto ifstates
 	set "ManifestID_1=%3"
 	set "DepotID_2=%4"
 	set "ManifestID_2=%5"
-	set "DownPath=%6"
-	set "username=%7"
+	set "username=%6"
 	goto Normal
 
 :ifstates
@@ -115,7 +113,6 @@ goto ifstates
 	if /i "%4"=="" (goto NoArg)
 	if /i "%5"=="" (goto NoArg)
 	if /i "%6"=="" (goto NoArg)
-	if /i "%7"=="" (goto NoArg)
 	goto initnormal
 
 :if2
@@ -123,8 +120,7 @@ goto ifstates
 	if /i "%2"=="" (goto NoArg)
 	if /i "%3"=="" (goto NoArg)
 	if /i "%4"=="" (goto NoArg)
-	if /i "%5"=="" (goto NoArg)
-	if /i "%6"=="" (goto NoArg)
+	if /i "%5"=="" (goto NoArg))
 	goto initextra
 
 :if3
@@ -136,8 +132,12 @@ goto ifstates
 	if /i "%6"=="" (goto NoArg)
 	if /i "%7"=="" (goto NoArg)
 	if /i "%8"=="" (goto NoArg)
-	if /i "%9"=="" (goto NoArg)
 	goto initcompressed
+
+:getpath
+	for /f "tokens=* delims=" %%x in (path.txt) do set DownPath=%%x
+	echo %DownPath%
+	goto ifstates
 
 :verifing
 	echo.
