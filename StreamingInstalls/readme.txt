@@ -8,7 +8,6 @@ Phantom Sight - Same Everywhere
 Red Crow - Same Everywhere
 Shifting Tides - Same Everywhere
 Velvet Shell - Same Everywhere
-!!! Crystal Guard - Same Everywhere (CURRENTLY NEW SEASON BUT EVENT FILES THERE!)
 
 Burnt Horizon - Release 
 Toy Rainbow (Burnt Horizon) - MU, Event, Shey
@@ -50,3 +49,6 @@ ToyRainbow2 - MU, Event, Shey
 
 North Star - Release
 NestDestruction - MU, Event, Shey
+
+Crystal Guard - Release
+EventMIX - MU, Event, Shey
