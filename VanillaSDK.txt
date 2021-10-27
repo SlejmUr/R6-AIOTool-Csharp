@@ -1,6 +1,0 @@
-﻿359550_install.vdf
-localization.lang
-RainbowSix.exe
-RainbowSix.exe.manifest
-sounddata/pc/sounds_eng_playgo.pck
-sounddata/pc/sounds_eng.pck
