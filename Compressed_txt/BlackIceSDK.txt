@@ -2,7 +2,7 @@
 RainbowSix.exe
 RainbowSix.exe.manifest
 localization.lang
-sounds_eng.pck
-sounds_eng_000000000.pck
-sounds_eng_playgo.pck
-sounds_eng_playgo_000000000.pck
+sounddata/pc/sounds_eng.pck
+sounddata/pc/sounds_eng_000000000.pck
+sounddata/pc/sounds_eng_playgo.pck
+sounddata/pc/sounds_eng_playgo_000000000.pck

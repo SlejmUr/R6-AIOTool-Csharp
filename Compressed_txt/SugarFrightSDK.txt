@@ -1,7 +1,4 @@
 359550_install.vdf
-
 defaultargs.dll
-
 localization.lang
-
 streaminginstall.ini
