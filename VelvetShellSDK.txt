@@ -1,0 +1,14 @@
+359550_install.vdf
+localization.lang
+RainbowSixGame.exe
+RainbowSixGame.exe.manifest
+sounddata/pc/sounds_eng_000000000.pck
+sounddata/pc/sounds_eng_000000002.pck
+sounddata/pc/sounds_eng_000000003.pck
+sounddata/pc/sounds_eng_000000004.pck
+sounddata/pc/sounds_eng_playgo_000000000.pck
+sounddata/pc/sounds_eng_playgo_000000002.pck
+sounddata/pc/sounds_eng_playgo_000000003.pck
+sounddata/pc/sounds_eng_playgo_000000004.pck
+sounddata/pc/sounds_eng_playgo.pck
+sounddata/pc/sounds_eng.pck

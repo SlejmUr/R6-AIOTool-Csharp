@@ -1,0 +1,6 @@
+359550_install.vdf
+defaultargs.dll
+localization.lang
+sounddata/pc/sounds_eng_playgo.pck
+sounddata/pc/sounds_eng.pck
+streaminginstall.ini

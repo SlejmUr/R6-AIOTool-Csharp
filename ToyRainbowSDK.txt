@@ -1,0 +1,10 @@
+359550_install.vdf
+defaultargs.dll
+localization.lang
+RainbowSix.exe
+RainbowSix.exe.manifest
+sounddata/pc/sounds_eng_events_012815133.pck
+sounddata/pc/sounds_eng_events.pck
+sounddata/pc/sounds_eng_playgo.pck
+sounddata/pc/sounds_eng.pck
+streaminginstall.ini
