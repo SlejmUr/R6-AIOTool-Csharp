@@ -1,5 +1,5 @@
 @echo off
-echo Killing PC fast download script
+set "emtpy="
 setlocal enableextensions enabledelayedexpansion
 goto getpath
 
@@ -18,10 +18,11 @@ goto getpath
 	echo Path is %DownPath% , UserName is %username%
 	echo.
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_1% -manifest %ManifestID_1% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 30 -max-downloads 30
-	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 30 -max-downloads 30 
+	echo.
+	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -validate -max-servers 30 -max-downloads 30
 	echo.
 	echo Download is completed^!
-	goto verifing
+	goto pasteplazas
 
 
 :Extra
@@ -38,10 +39,11 @@ goto getpath
 	echo Path is %DownPath% , UserName is %username% ^| File1 is %File1% , File2 is %File2%
 	echo.
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_1% -manifest %ManifestID_1% -username %username% -remember-password -dir "%DownPath%" -filelist %File1% -validate -max-servers 30 -max-downloads 30
+	echo.
 	dotnet DepotDownloader/DepotDownloader.dll -app 359550 -depot %DepotID_2% -manifest %ManifestID_2% -username %username% -remember-password -dir "%DownPath%" -filelist %File2% -validate -max-servers 30 -max-downloads 30    
 	echo.
 	echo Download is completed^!
-	goto verifing
+	goto pasteplazas
 
 :helping
 	echo.   	 Welcome to AIO-Tool Batch Extension^^!
@@ -81,6 +83,7 @@ goto getpath
 	set "username=%6"
 	set "File1=%7"
 	set "File2=%8"
+	set "PlazaDir=%9"
 	goto Compressed
 
 :initnormal
@@ -89,6 +92,7 @@ goto getpath
 	set "DepotID_2=%4"
 	set "ManifestID_2=%5"
 	set "username=%6"
+	set "PlazaDir=%7"
 	goto Normal
 
 :ifstates
@@ -121,7 +125,7 @@ goto getpath
 	if /i "%2"=="" (goto NoArg)
 	if /i "%3"=="" (goto NoArg)
 	if /i "%4"=="" (goto NoArg)
-	if /i "%5"=="" (goto NoArg))
+	if /i "%5"=="" (goto NoArg)
 	goto initextra
 
 :if3
@@ -139,6 +143,19 @@ goto getpath
 	for /f "tokens=* delims=" %%x in (path.txt) do set DownPath=%%x
 	echo %DownPath%
 	goto ifstates
+
+:pasteplazas
+	echo.
+	echo [%PlazaDir%]
+	if [%PlazaDir%]==[%empty%] (
+	echo Plazadir is Empty, nothing got moved
+	)
+	if NOT [%PlazaDir%]==[] (
+	echo Plazadir is NOT Empty, copy started..
+	robocopy Plazas\%PlazaDir% %DownPath% /S>copy.txt
+	echo Copy finished
+	)
+	goto verifing
 
 :verifing
 	echo.
@@ -168,4 +185,5 @@ goto getpath
 	set "veri="
 	set "prev="
 	set "AppID="
+	set "PlazaDir="
 	pause
