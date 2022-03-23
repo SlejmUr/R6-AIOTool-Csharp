@@ -1,5 +1,5 @@
 They updated the UPC R1 to UPC R2 + some function
-Thron is the new operator
+Thorn is the new operator
 1 Map rework, new HUD
 OP customizable more
 Event soon?: S.I. , SnowBall
