@@ -280,14 +280,9 @@ datapc64_mtx_bnk_mesh.forge
 datapc64_mtx_bnk_soundbank.forge
 datapc64_mtx_bnk_soundmedia.forge
 datapc64_mtx_bnk_textures0.forge
-datapc64_mtx_bnk_textures1.forge
-datapc64_mtx_bnk_textures2.forge
-datapc64_mtx_bnk_textures3.forge
 datapc64_mtx_playgo.forge
 datapc64_mtx_set01_bnk_mesh.forge
 datapc64_mtx_set01_bnk_textures0.forge
-datapc64_mtx_set01_bnk_textures1.forge
-datapc64_mtx_set01_bnk_textures3.forge
 datapc64_mtx_set01.depgraphbin
 datapc64_mtx_set01.forge
 datapc64_mtx.depgraphbin
