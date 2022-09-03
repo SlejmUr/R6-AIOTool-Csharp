@@ -218,3 +218,16 @@ uplay_r1_loader.dll
 uplay_r1_loader64.dll
 vivoxsdk_x64.dll
 vmprotectsdk64.dll
+videos/critter_gameover.bik
+videos/yager_gameover.bik
+videos/doc_gameover.bik
+videos/fury_brief_hospital.bik
+videos/fury_brief_junkyard.bik
+videos/fury_brief_hospital.bik
+videos/fury_brief_resort.bik
+videos/fury_introduction.bik
+videos/grunt_gameover.bik
+videos/leader_gameover.bik
+videos/rhino_gameover.bik
+videos/rooter_gameover.bik
+videos/yager_gameover.bik
